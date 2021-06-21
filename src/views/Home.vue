@@ -23,7 +23,9 @@
               tile
               size="80"
               color="grey"
-            ></v-list-item-avatar>
+            >
+              <v-img :src="`https://picsum.photos/id/${post.id}/80/80`" />
+            </v-list-item-avatar>
           </v-list-item>
 
           <v-card-actions>
@@ -31,8 +33,9 @@
               outlined
               rounded
               text
+              @click="$router.push({ name: 'ShowPost', params: { id: post.id } })"
             >
-              Button
+              Read More
             </v-btn>
           </v-card-actions>
         </v-card>
