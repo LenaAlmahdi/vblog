@@ -4,6 +4,7 @@
     color="primary"
     dark
   >
+    <v-app-bar-nav-icon @click.stop="$store.commit('toggleDrawer')"></v-app-bar-nav-icon>
     <router-link class="d-flex align-center" to="/">
       <v-img
         alt="Vuetify Logo"
