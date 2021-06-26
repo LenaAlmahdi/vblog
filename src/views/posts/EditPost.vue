@@ -1,7 +1,6 @@
 <template>
   <v-container>
     <div class="text-h3">The Edit Post View</div>
-    {{ post.title }}
     <v-form @submit.prevent="editPost">
       <v-text-field v-model="post.title" label="Post Title" />
       <v-text-field v-model="post.body" label="Post Content" />
@@ -31,12 +30,13 @@ export default {
       })
     },
     editPost () {
+      this.$store.commit('toggleLoading')
       const payload = {
         title: this.post.title,
         body: this.post.body
       }
       this.axios.put(`https://jsonplaceholder.typicode.com/posts/${this.postId}`, payload).then((res) => {
-        alert('hello evrything is going well')
+        this.$store.commit('toggleLoading')
       })
     }
   },
