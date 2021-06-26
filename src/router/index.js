@@ -23,6 +23,12 @@ const routes = [
     name: 'ShowPost',
     component: () => import('@/views/posts/ShowPost.vue'),
     props: route => ({ postId: route.params.id })
+  },
+  {
+    path: '/posts/:id/edit',
+    name: 'EditPost',
+    component: () => import('@/views/posts/EditPost.vue'),
+    props: route => ({ postId: route.params.id })
   }
 ]
 
