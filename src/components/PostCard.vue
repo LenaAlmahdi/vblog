@@ -32,6 +32,14 @@
       >
         Read More
       </v-btn>
+      <v-btn
+        outlined
+        rounded
+        text
+        @click="$router.push({ name: 'EditPost', params: { id: post.id } })"
+      >
+        Edit
+      </v-btn>
     </v-card-actions>
   </v-card>
 </template>
