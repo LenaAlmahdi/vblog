@@ -11,6 +11,12 @@ const routes = [
     component: Home
   },
   {
+    path: '/create',
+    name: 'CreatePhoto',
+    // component: import('../views/photos/CreatePhoto.vue')
+    component: () => import('@/views/photos/CreatePhoto.vue')
+  },
+  {
     path: '/about',
     name: 'About',
     // route level code-splitting
