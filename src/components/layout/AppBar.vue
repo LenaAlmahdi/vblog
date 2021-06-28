@@ -1,9 +1,5 @@
 <template>
-  <v-app-bar
-    app
-    color="primary"
-    dark
-  >
+  <v-app-bar app color="primary" dark>
     <v-app-bar-nav-icon @click.stop="$store.commit('toggleDrawer')"></v-app-bar-nav-icon>
     <router-link class="d-flex align-center" to="/">
       <v-img
@@ -35,15 +31,14 @@
       <span class="mr-2">Latest Release</span>
       <v-icon>mdi-open-in-new</v-icon>
     </v-btn>
+    <v-btn outlined text @click="$router.push({ name: 'Register' })"> Register </v-btn>
   </v-app-bar>
 </template>
 
+//
 <script>
-export default {
-
-}
+// export default {};
+//
 </script>
 
-<style>
-
-</style>
+<style></style>

@@ -23,7 +23,13 @@ const routes = [
     name: 'ShowPost',
     component: () => import('@/views/posts/ShowPost.vue'),
     props: route => ({ postId: route.params.id })
+  },
+  {
+    path: '/register',
+    name: 'Register',
+    component: () => import('@/views/Register.vue')
   }
+
 ]
 
 const router = new VueRouter({
