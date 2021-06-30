@@ -1,3 +1,4 @@
+import store from '@/store'
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Home from '../views/Home.vue'
@@ -33,12 +34,35 @@ const routes = [
     path: '/posts/:id/edit',
     name: 'EditPost',
     component: () => import('@/views/posts/EditPost.vue'),
-    props: route => ({ postId: route.params.id })
+    props: route => ({ postId: route.params.id }),
+    beforeEnter: (to, from, next) => {
+      if (store.getters.isLoggedIn) {
+        // eslint-disable-next-line eqeqeq
+        const index = store.state.posts.findIndex(post => post.id == to.params.id)
+
+        if (index !== -1) {
+          const post = store.state.posts[index]
+          // eslint-disable-next-line eqeqeq
+          if (post.userId == store.state.user.id) { next() } else { next({ name: 'Home' }) }
+        }
+      } else { next({ name: 'Home' }) }
+    }
   },
   {
     path: '/register',
     name: 'Register',
-    component: () => import('@/views/Register.vue')
+    component: () => import('@/views/Register.vue'),
+    beforeEnter: (to, from, next) => {
+      if (!store.getters.isLoggedIn) { next() } else { next({ name: 'Home' }) }
+    }
+  },
+  {
+    path: '/login',
+    name: 'Login',
+    component: () => import('@/views/Login.vue'),
+    beforeEnter: (to, from, next) => {
+      if (!store.getters.isLoggedIn) { next() } else { next({ name: 'Home' }) }
+    }
   }
 
 ]
